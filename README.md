@@ -14,7 +14,7 @@ the error and return a 500 result. It takes an object that can have a `logger` a
 
 `errorPageRenderer` is optional, but if passed, should be a function that can take an error and return an object with properties `content` and `contentType`. These will be used as the respective details in the response.
 ```javascript
-const { getErrorHandler } = require('./../lib');
+const { getErrorHandler } = require('login.dfe.express-error-handling');
 const errorPageRenderer = (error) => {
   render('500', {error});
 }
@@ -27,11 +27,29 @@ The `asyncWrapper` can be used to wrap async actions for express, so that errors
 passed through the standard express error chain.
 
 ```javascript
-const { asyncWrapper } = require('./../lib');
+const { asyncWrapper } = require('login.dfe.express-error-handling');
 
 app.use('/my-route', asyncWrapper(async (req, res) => {
   await someAction();
   
   res.status(204).send();
+}));
+```
+
+
+## EJS Error Page Renderer
+The package includes an EJS error page renderer:
+
+```javascript
+const { getErrorHandler, ejsErrorPages } = require('login.dfe.express-error-handling');
+
+const showErrorDetailsOnPage = false; // You can include error details on the page in appropriate environments
+const urls = { help: 'http://url.to/help' }; // Links to common locations, such as help
+
+const errorPageRenderer = ejsErrorPages.getErrorPageRenderer(urls, showErrorDetailsOnPage);
+
+app.use(getErrorHandler({
+  logger,
+  errorPageRenderer,
 }));
 ```
