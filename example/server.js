@@ -4,7 +4,8 @@ const { asyncWrapper, getErrorHandler, ejsErrorPages } = require('./../lib');
 const app = express();
 const urls = {
   help: 'http://localhost:1234/help/contact',
-  assets: 'https://assets.signin.education.gov.uk'
+  assets: 'https://dev-cdn.signin.education.gov.uk',
+  assetsVersion: '1'
 };
 
 app.get('/greet', asyncWrapper((req, res) => {
