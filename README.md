@@ -44,7 +44,15 @@ The package includes an EJS error page renderer:
 const { getErrorHandler, ejsErrorPages } = require('login.dfe.express-error-handling');
 
 const showErrorDetailsOnPage = false; // You can include error details on the page in appropriate environments
-const urls = { help: 'http://url.to/help' }; // Links to common locations, such as help
+
+// Links to common locations, such as help or static assets
+const urls = { 
+  help: 'http://url.to/help'
+  assets: 'http://cdn.with.assets',
+  assetsVersion: 'v1'
+}; 
+//assetsVersion is a string that will be added when requesting static assets
+// http://cdn.with.assets/assetName?version=v1
 
 const errorPageRenderer = ejsErrorPages.getErrorPageRenderer(urls, showErrorDetailsOnPage);
 
