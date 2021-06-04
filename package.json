@@ -30,7 +30,6 @@
     "clearMocks": true
   },
   "dependencies": {
-    "dfe-frontend-toolkit": "github:DFE-Digital/dfe.ui.toolkit#1.0.0",
     "ejs": "^3.1.6"
   }
 }
