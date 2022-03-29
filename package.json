@@ -17,12 +17,12 @@
   },
   "homepage": "https://github.com/DFE-Digital/login.dfe.express-error-handling#readme",
   "devDependencies": {
-    "eslint": "^4.19.1",
-    "eslint-config-airbnb-base": "^11.3.1",
-    "eslint-plugin-import": "^2.22.1",
-    "express": "^4.17.1",
-    "jest": "^24.9.0",
-    "jest-cli": "^21.2.1"
+    "eslint": "^8.12.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.4",
+    "express": "^4.17.3",
+    "jest": "^27.5.1",
+    "jest-cli": "^27.5.1"
   },
   "jest": {
     "testEnvironment": "node",

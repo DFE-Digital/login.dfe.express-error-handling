@@ -17,7 +17,7 @@ const res = {
 };
 const next = jest.fn();
 
-describe('when using express error handler middleware', async () => {
+describe('when using express error handler middleware', () => {
   beforeEach(() => {
     logger.error.mockReset();
 
