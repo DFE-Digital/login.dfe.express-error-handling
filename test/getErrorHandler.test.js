@@ -1,7 +1,7 @@
 const { getErrorHandler } = require('./../lib');
 
 const logger = {
-  error: jest.fn(),
+  log: jest.fn(),
 };
 const errorPageRenderer = jest.fn();
 const error = new Error('test');
@@ -19,7 +19,7 @@ const next = jest.fn();
 
 describe('when using express error handler middleware', () => {
   beforeEach(() => {
-    logger.error.mockReset();
+    logger.log.mockReset();
 
     errorPageRenderer.mockReset();
     errorPageRenderer.mockReturnValue({ content: 'Error content here', contentType: 'text/plain' });
@@ -43,12 +43,15 @@ describe('when using express error handler middleware', () => {
 
     middleware(error, req, res, next);
 
-    expect(logger.error.mock.calls).toHaveLength(1);
-    expect(logger.error.mock.calls[0][0]).toBe('Error occurred processing GET /some-url: test');
-    expect(logger.error.mock.calls[0][1]).toMatchObject({
-      url: '/some-url',
-      method: 'GET',
-      error
+    expect(logger.log.mock.calls).toHaveLength(1);
+    expect(logger.log.mock.calls[0][0]).toMatchObject({
+      level: 'error',
+      message: 'Error occurred processing GET /some-url: test',
+      meta: {
+        url: '/some-url',
+        method: 'GET',
+        error,
+      },
     });
   });
 
