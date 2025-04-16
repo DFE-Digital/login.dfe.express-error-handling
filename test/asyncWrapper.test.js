@@ -15,7 +15,6 @@ describe("when wrapping an action in asyncWrapper", () => {
 
   it("then it should call the action with passed req, res and next", async () => {
     await wrappedAction(req, res, next);
-    const intentionalError = "ESLINT ERROR";
 
     expect(action.mock.calls).toHaveLength(1);
     expect(action.mock.calls[0][0]).toBe(req);
