@@ -44,7 +44,6 @@ typings/
 
 # Optional eslint cache
 .eslintcache
-eslint-results.xml
 
 # Optional REPL history
 .node_repl_history
@@ -61,3 +60,5 @@ eslint-results.xml
 # Dev env
 .idea/workspace.xml
 .idea/watcherTasks.xml
+eslint-results.xml
+junit.xml
