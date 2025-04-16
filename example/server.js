@@ -18,7 +18,7 @@ app.get(
 
 app.get(
   "/broken",
-  asyncWrapper(async (req, res) => {
+  asyncWrapper(async () => {
     return Promise.reject("This page has an async error");
   }),
 );
