@@ -1,4 +1,4 @@
-const { asyncWrapper } = require('./../lib');
+const { asyncWrapper } = require("./../lib");
 
 const action = jest.fn();
 const wrappedAction = asyncWrapper(action);
@@ -6,14 +6,14 @@ const req = {};
 const res = {};
 const next = jest.fn();
 
-describe('when wrapping an action in asyncWrapper', () => {
+describe("when wrapping an action in asyncWrapper", () => {
   beforeEach(() => {
     action.mockReset();
 
     next.mockReset();
   });
 
-  it('then it should call the action with passed req, res and next', async () => {
+  it("then it should call the action with passed req, res and next", async () => {
     await wrappedAction(req, res, next);
 
     expect(action.mock.calls).toHaveLength(1);
@@ -22,8 +22,8 @@ describe('when wrapping an action in asyncWrapper', () => {
     expect(action.mock.calls[0][2]).toBe(next);
   });
 
-  it('then it should call next with error if action throws error', async () => {
-    const error = new Error('test');
+  it("then it should call next with error if action throws error", async () => {
+    const error = new Error("test");
     action.mockImplementation(() => {
       throw error;
     });
@@ -34,7 +34,7 @@ describe('when wrapping an action in asyncWrapper', () => {
     expect(next.mock.calls[0][0]).toBe(error);
   });
 
-  it('then it should not call next if action does not throw error', async () => {
+  it("then it should not call next if action does not throw error", async () => {
     await wrappedAction(req, res, next);
 
     expect(next.mock.calls).toHaveLength(0);
